@@ -88,7 +88,7 @@ class Item(ItemBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     created_at: datetime | None = Field(default_factory=get_datetime_utc)
     owner_id: uuid.UUID = Field(
-        foreign_key="user.id", nullable=False, ondelete="CASCADE"
+        foreign_key="user.id", nullable=False, ondelete="CASCADE", index=True
     )
     owner: User | None = Relationship(back_populates="items")
 
